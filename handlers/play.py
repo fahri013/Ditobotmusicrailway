@@ -513,8 +513,8 @@ async def play(_, message: Message):
                     InlineKeyboardButton("🗑 𝐭𝐮𝐭𝐮𝐩", callback_data="cls"),
                 ],[
                     InlineKeyboardButton("📣 𝐌𝐲 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 📣", url=f"https://t.me/{UPDATES_CHANNEL}")
-                    InlineKeyboardButton("💬 𝐌𝐲 𝐆𝐫𝐨𝐮𝐩 💬", url=f"https://t.me/{GROUP_SUPPORT}") 
-                ],
+                    InlineKeyboardButton("💬 𝐌𝐲 𝐆𝐫𝐨𝐮𝐩 💬", url="https://t.me/areasulawesi") 
+              
             ]
         )
         file_name = get_file_name(audio)
