@@ -97,7 +97,7 @@ async def generate_cover(requested_by, title, views, duration, thumbnail):
     img = Image.open("temp.png")
     draw = ImageDraw.Draw(img)
     font = ImageFont.truetype("etc/font.otf", 60)
-    draw.text((40, 550), f"Playing here....", (0, 0, 0), font=font)
+    draw.text((40, 550), f"Yang sedang terputar....", (0, 0, 0), font=font)
     draw.text((40, 630),
         f"{title}",
         (0, 0, 0),
@@ -121,18 +121,18 @@ async def playlist(client, message):
         temp.append(t)
     now_playing = temp[0][0]
     by = temp[0][1].mention(style="md")
-    msg = "**Now playing** on {}".format(message.chat.title)
+    msg = "**Sedang diputar** di gc {}".format(message.chat.title)
     msg += "\n• "+ now_playing
-    msg += "\n• Requested By "+by
+    msg += "\n• Permintaan dari jamet"+by
     temp.pop(0)
     if temp:
         msg += "\n\n"
-        msg += "**Queued Song**"
+        msg += "**Dalam antrian**"
         for song in temp:
             name = song[0]
             usr = song[1].mention(style="md")
-            msg += f"\n• {name}"
-            msg += f"\n• Requested by {usr}\n"
+            msg += f"\n• Judul: {name}"
+            msg += f"\n• Permintaan dari jamet {usr}\n"
     await message.reply_text(msg)
                             
 # ============================= Settings =========================================
@@ -251,9 +251,9 @@ async def p_cb(b, cb):
             temp.append(t)
         now_playing = temp[0][0]
         by = temp[0][1].mention(style="md")
-        msg = "**Now playing** in {}".format(cb.message.chat.title)
-        msg += "\n• " + now_playing
-        msg += "\n• Req by " + by
+        msg = "**Dimainkan sekarang** di {}".format(cb.message.chat.title)
+        msg += "\n• Judul " + now_playing
+        msg += "\n• Permintaan dari jamet " + by
         temp.pop(0)
         if temp:
             msg += "\n\n"
@@ -261,8 +261,8 @@ async def p_cb(b, cb):
             for song in temp:
                 name = song[0]
                 usr = song[1].mention(style="md")
-                msg += f"\n• {name}"
-                msg += f"\n• Req by {usr}\n"
+                msg += f"\n• Judul {name}"
+                msg += f"\n• Req dari jamet{usr}\n"
         await cb.message.edit(msg)      
 
 
@@ -329,8 +329,8 @@ async def m_cb(b, cb):
              for song in temp:
                  name = song[0]
                  usr = song[1].mention(style="md")
-                 msg += f"\n• {name}"
-                 msg += f"\n• Atas permintaan {usr}\n"
+                 msg += f"\n• Judul {name}"
+                 msg += f"\n• Permintaan jamet {usr}\n"
         await cb.message.edit(msg)      
                       
     elif type_ == "resume":     
@@ -357,12 +357,12 @@ async def m_cb(b, cb):
             await cb.answer("music paused!")
 
     elif type_ == "cls":          
-        await cb.answer("closed menu")
+        await cb.answer("menu telah ditutup")
         await cb.message.delete()       
 
     elif type_ == "menu":  
         stats = updated_stats(cb.message.chat, qeue)  
-        await cb.answer("menu opened")
+        await cb.answer("menu dibuka")
         marr = InlineKeyboardMarkup(
             [
                 [
@@ -424,7 +424,7 @@ async def play(_, message: Message):
     global useer
     if message.chat.id in DISABLED_GROUPS:
         return    
-    lel = await message.reply("🔄 **processing...**")
+    lel = await message.reply("🔄 **sabarki boss...**")
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
     try:
@@ -504,7 +504,7 @@ async def play(_, message: Message):
     if audio:
         if round(audio.duration / 60) > DURATION_LIMIT:
             raise DurationLimitError(
-                f"❌ **lagu dengan durasi lebih dari** `{DURATION_LIMIT}` **menit tidak dapat diputar!**"
+                f"❌ **lagu dengan durasi lebih dari** `{DURATION_LIMIT}` **menit tidak dapat diputar! Makanya jgn rakus tolol**"
             )
         keyboard = InlineKeyboardMarkup(
             [
@@ -512,8 +512,11 @@ async def play(_, message: Message):
                     InlineKeyboardButton("🖱 Menu", callback_data="menu"),
                     InlineKeyboardButton("🎼 Playlist", callback_data="playlist"),
                 ],[
-                    InlineKeyboardButton("📣 Channel gua", url=f"https://t.me/{UPDATES_CHANNEL}")
-                ],
+                    InlineKeyboardButton("📣 Follow Channel", url=f"https://t.me/{UPDATES_CHANNEL}"), 
+                    InlineKeyboardButton("👥 Mutualan IG yuk", url="https://instagram.com/aldasulaimann?utm_medium=copy_link"), 
+                ],[
+                    InlineKeyboardButton("🗑️ Tutup", callback_data="cls")
+                ], 
             ]
         )
         file_name = get_file_name(audio)
