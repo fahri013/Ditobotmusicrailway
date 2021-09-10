@@ -748,7 +748,10 @@ async def lol_cb(b, cb):
                     InlineKeyboardButton("🖱 ᴍᴇɴᴜ", callback_data="menu"),
                     InlineKeyboardButton("🎼 Playlist", callback_data="playlist"),
                 ],[
-                    InlineKeyboardButton("📣 Follow Channelku", url=f"https://t.me/{UPDATES_CHANNEL}")
+                    InlineKeyboardButton("📣 Follow Channel", url=f"https://t.me/{UPDATES_CHANNEL}"), 
+                    InlineKeyboardButton("👥 Mutualan IG yuk", url="https://instagram.com/aldasulaimann?utm_medium=copy_link"), 
+                ],[
+                    InlineKeyboardButton("🗑️ Tutup", callback_data="cls")
                 ],
             ]
     )
