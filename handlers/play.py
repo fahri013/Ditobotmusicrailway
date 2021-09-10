@@ -122,8 +122,8 @@ async def playlist(client, message):
     now_playing = temp[0][0]
     by = temp[0][1].mention(style="md")
     msg = "**Sedang diputar** di gc {}".format(message.chat.title)
-    msg += "\n• "+ now_playing
-    msg += "\n• Permintaan dari jamet"+by
+    msg += "\n• Judul:" +now_playing
+    msg += "\n• Permintaan dari jamet" +by
     temp.pop(0)
     if temp:
         msg += "\n\n"
@@ -261,8 +261,8 @@ async def p_cb(b, cb):
             for song in temp:
                 name = song[0]
                 usr = song[1].mention(style="md")
-                msg += f"\n• Judul {name}"
-                msg += f"\n• Req dari jamet{usr}\n"
+                msg += f"\n• Judul: {name}"
+                msg += f"\n• Req dari jamet {usr}\n"
         await cb.message.edit(msg)      
 
 
@@ -329,7 +329,7 @@ async def m_cb(b, cb):
              for song in temp:
                  name = song[0]
                  usr = song[1].mention(style="md")
-                 msg += f"\n• Judul {name}"
+                 msg += f"\n• Judul: {name}"
                  msg += f"\n• Permintaan jamet {usr}\n"
         await cb.message.edit(msg)      
                       
@@ -424,7 +424,7 @@ async def play(_, message: Message):
     global useer
     if message.chat.id in DISABLED_GROUPS:
         return    
-    lel = await message.reply("🔄 **sabarki boss...**")
+    lel = await message.reply("🔄 __**Sabarki boss...**__")
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
     try:
