@@ -114,7 +114,7 @@ async def resume(_, message: Message):
     if (chat_id not in callsmusic.pytgcalls.active_calls) or (
         callsmusic.pytgcalls.active_calls[chat_id] == "playing"
     ):
-        await message.reply_text("❗ tidak ada musik bego!")
+        await message.reply_text("❗ **tidak ada musik bego**!")
     else:
         callsmusic.pytgcalls.resume_stream(chat_id)
         await message.reply_text("⏸ Lagu dilanjutkan!")
@@ -126,7 +126,7 @@ async def resume(_, message: Message):
 async def stop(_, message: Message):
     chat_id = get_chat_id(message.chat)
     if chat_id not in callsmusic.pytgcalls.active_calls:
-        await message.reply_text("❗ tidak ada musik bego!")
+        await message.reply_text("❗ **tidak ada musik bego**!")
     else:
         try:
             queues.clear(chat_id)
@@ -134,7 +134,7 @@ async def stop(_, message: Message):
             pass
 
         callsmusic.pytgcalls.leave_group_call(chat_id)
-        await message.reply_text("⏹ akhirnya berhenti juga, capek gua putarin lu semua musik!")
+        await message.reply_text("⏹ **akhirnya berhenti juga, capek gua nyanyiin lu semua** 😭!")
 
 
 @Client.on_message(command("skip") & other_filters)
@@ -144,7 +144,7 @@ async def skip(_, message: Message):
     global que
     chat_id = get_chat_id(message.chat)
     if chat_id not in callsmusic.pytgcalls.active_calls:
-        await message.reply_text("❗ skip skip mulu, cari lagu yg bener anjinkk!")
+        await message.reply_text("❗ **skip skip mulu, cari lagu yg bener bego** !")
     else:
         queues.task_done(chat_id)
 
@@ -160,7 +160,7 @@ async def skip(_, message: Message):
         skip = qeue.pop(0)
     if not qeue:
         return
-    await message.reply_text(f"⫸ skipped : **{skip[0]}**\n⫸ now playing : **{qeue[0][0]}**")
+    await message.reply_text(f"⫸ duh di skip: **{skip[0]}**\n⫸ terputar sekarang: **{qeue[0][0]}**")
 
 
 @Client.on_message(command("auth") & other_filters)
