@@ -448,13 +448,13 @@ async def play(_, message: Message):
                     invitelink = await _.export_chat_invite_link(chid)
                 except:
                     await lel.edit(
-                        "<b>make me as admin first.</b>",
+                        "<b>Jadikan gua admin terlebih dahulu, agar bot bisa memutar musik.</b>",
                     )
                     return
                 try:
                     await USER.join_chat(invitelink)
                     await USER.send_message(
-                        message.chat.id, "🤖: i'm joined to this group for playing music on voice chat"
+                        message.chat.id, "🤖: Saya bergabung di grup ini untuk memutar musik di obrolan suara"
                     )
                     await lel.edit(
                         "<b>helper userbot joined your chat</b>",
@@ -634,7 +634,7 @@ async def play(_, message: Message):
                 views = results[0]["views"]
             except Exception as e:
                 await lel.edit(
-                "**❌ song not found.** please give a valid song name."
+                "**❌ Lagu tidak ditemukan.** Tolong beri saya judul lagu yg gk aneh-aneh."
             )
                 print(str(e))
                 return
@@ -667,8 +667,8 @@ async def play(_, message: Message):
         qeue.append(appendable)
         await message.reply_photo(
             photo="final.png",
-            caption=f"💡 **Track added to the queue**\n\n🏷 **Name:** [{title[:45]}]({url})\n⏱ **Duration:** `{duration}`\n🎧 **Request by:** {message.from_user.mention}\n" \
-                   +f"\n🔢 **Track Position:** » `{position}` «",
+            caption=f"💡 **Lagu ditambah kedalam antrian**\n\n🏷 **Judul:** [{title[:45]}]({url})\n⏱ **Durasi:** `{duration}`\n🎧 **Permintaan dari jamet:** {message.from_user.mention}\n" \
+                   +f"\n🔢 **Lagu diposisi:** » `{position}` « harap sabar muehehe",
             reply_markup=keyboard
         )
     else:
@@ -687,8 +687,8 @@ async def play(_, message: Message):
             return
         await message.reply_photo(
             photo="final.png",
-            caption=f"🏷 **Name:** [{title[:45]}]({url})\n⏱ **Duration:** `{duration}`\n💡 **Status:** `Playing`\n" \
-                   +f"🎧 **Request by:** {message.from_user.mention}",
+            caption=f"🏷 **Judul:** [{title[:45]}]({url})\n⏱ **Durasi:** `{duration}`\n💡 **Status:** `Memutar`\n" \
+                   +f"🎧 **Permintaan dari jamet:** {message.from_user.mention}",
             reply_markup=keyboard
         )
         os.remove("final.png")
@@ -704,13 +704,13 @@ async def lol_cb(b, cb):
     try:
         x,query,useer_id = typed_.split("|")      
     except:
-        await cb.message.edit("❌ song not found")
+        await cb.message.edit("❌ Lagu tidak ditemukan")
         return
     useer_id = int(useer_id)
     if cb.from_user.id != useer_id:
         await cb.answer("you are not people who requested this song !", show_alert=True)
         return
-    #await cb.message.edit("🔁 **processing...**")
+    #await cb.message.edit("🔁 **sabarki boss...**")
     x=int(x)
     try:
         useer_name = cb.message.reply_to_message.from_user.first_name
@@ -729,7 +729,7 @@ async def lol_cb(b, cb):
             dur += (int(dur_arr[i]) * secmul)
             secmul *= 60
         if (dur / 60) > DURATION_LIMIT:
-             await cb.message.edit(f"❌ Lagu dengan durasi lebih dari `{DURATION_LIMIT}` menit tidak dapat diputar.")
+             await cb.message.edit(f"❌ BUJEDD, lagu lu lebih dari `{DURATION_LIMIT}`. Yg lain jg mau request woi! ")
              return
     except:
         pass
