@@ -32,12 +32,12 @@ async def _human_time_duration(seconds):
 @Client.on_message(command(["start", f"start@{BOT_USERNAME}"]) & filters.private & ~filters.edited)
 async def start_(client: Client, message: Message):
     await message.reply_text(
-        f"""<b>✨ **Halooo **{message.from_user.first_name}** Telaso** \n
+        f"""<b>🤟🤟 **Halooo** **{message.from_user.first_name}** **Telassoo** \n
 💭 **[{BOT_NAME}](https://t.me/{BOT_USERNAME}) Bot ini dapat memutar musik di obrolan suara di gc lu, !!**
 
 💡 **Cari perintah apa aja yg ada dalam bot di » PERINTAH!**
 
-❓ **Bila ketololan lu muncul lu ketik aja /help**
+❓ **Bila lu bingung, klik aja /help**
 
 🔔 **Perhatian, lu {message.from_user.first_name} klo dikasi gratis jgn mengeluh bego, klo lagu lu proses terus, berarti udah dri sananya error!**
 </b>""",
@@ -54,19 +54,19 @@ async def start_(client: Client, message: Message):
                          "📚 Perintah", callback_data="cbcmds"
                     ),
                     InlineKeyboardButton(
-                        "🤗Donasinya om/tante🤗", url="https://t.me/tummingrockers")
+                        "🤗 Donasinya om/tante 🤗", url="https://t.me/tummingrockers")
                 ],[
                     InlineKeyboardButton(
-                        "👥Join Grup Gua👥", url=f"https://t.me/{GROUP_SUPPORT}"
+                        "👥 Join Grup Gua 👥", url=f"https://t.me/{GROUP_SUPPORT}"
                     ),
                     InlineKeyboardButton(
-                        "📣Official Channel📣", url=f"https://t.me/{UPDATES_CHANNEL}")
+                        "📣 Official Channel 📣", url=f"https://t.me/{UPDATES_CHANNEL}")
                 ],[
                     InlineKeyboardButton(
-                        "💕Terima Kasih Buat💕", url="https://t.me/tummingrockers")
+                        "💕 Terima Kasih Buat 💕", url="https://t.me/tummingrockers")
                 ],[
                     InlineKeyboardButton(
-                        "🤤ASUPAN🤤", url="https://xnxx.com"
+                        "🤤 ASUPAN 🤤", url="https://xnxx.com"
                     )
                 ]
             ]
@@ -103,7 +103,7 @@ async def help(client: Client, message: Message):
 
 **Please press the button below to read the explanation and see the list of available commands !**
 
-⚡ __Powered by {BOT_NAME} A.I""",
+⚡ __Powered by {BOT_NAME}""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
